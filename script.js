@@ -14,12 +14,10 @@ let listB = [];
 
 let boat = null;
 let hasCrossed = false;
-const solution = listA;
 let gameOver = false;
+const solution = listA;
 
 function checkElements() {
-    const wolf = "You lose. The wolf ate the goat";
-    const goat = "You lose. The goat ate the grass";
 
     const checkList = (list) => {
 
@@ -104,7 +102,17 @@ function placeItems() {
     }
 }
 
-crossBtn.addEventListener("click", function () {
+function transferItems() {
+    if (hasCrossed && boat) {
+        listB.push(boat);
+        boat = null;
+        setTimeout(placeItems, 2000);
+    }
+
+    checkElements()
+}
+
+crossBtn.addEventListener("click", function() {
     if (gameOver) return
 
     hasCrossed = !hasCrossed;
@@ -115,7 +123,7 @@ crossBtn.addEventListener("click", function () {
         river.classList.remove("crossRight");
     }
 
-    checkElements()
+    transferItems()
 })
 
 placeItems()
