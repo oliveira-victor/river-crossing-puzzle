@@ -55,11 +55,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: left;
-    transition: all 2s ease;
-}
-
-.crossRight {
-    justify-content: right;
 }
 
 .sideA, .sideB {
@@ -83,8 +78,35 @@ body {
     }
 }
 
+.movement {
+    width: 160px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    transition: all 2s ease;
+}
+
+@media (max-width: 768px) {
+    .movement {
+        width: 120px;
+    }
+}
+
+.moveRight {
+    width: 100%;
+}
+
 .boat {
-    background-color: #233249;
+    width: 160px;
+    height: auto;
+    background-color: #553c17;
+}
+
+@media (max-width: 768px) {
+    .boat {
+        width: 120px;
+    }
 }
 
 .crossBtn {

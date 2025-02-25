@@ -3,6 +3,7 @@ const sideB = document.getElementById('sideB');
 const river = document.getElementById('river');
 const boatSpace = document.getElementById('boat');
 const crossBtn = document.getElementById('crossBtn');
+const moveBoat = document.getElementById('moveBoat');
 
 let listA = [
     { title: "grass", img: "https://cdn-icons-png.flaticon.com/512/5367/5367613.png" },
@@ -144,9 +145,9 @@ crossBtn.addEventListener("click", function () {
     hasCrossed = !hasCrossed;
 
     if (hasCrossed) {
-        river.classList.add("crossRight");
+        moveBoat.classList.add("moveRight");
     } else {
-        river.classList.remove("crossRight");
+        moveBoat.classList.remove("moveRight");
     }
 
     transferItems()
