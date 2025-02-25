@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="62.494812mm"
+   height="62.996262mm"
+   viewBox="0 0 62.494812 62.996262"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-213.24233,-102.65281)">
+    <g
+       id="g3-8"
+       transform="translate(105.075,5.55145)">
+      <circle
+         style="fill:#784421;stroke-width:0.529167"
+         id="path1-6-7"
+         cx="140.1987"
+         cy="129.63419"
+         r="30.463434" />
+      <circle
+         style="fill:#c87137;stroke-width:0.529167"
+         id="path1-9"
+         cx="138.63077"
+         cy="127.56479"
+         r="30.463434" />
+      <g
+         id="g2-2"
+         transform="translate(-35.265319,61.494198)">
+        <g
+           id="g5"
+           transform="rotate(45,188.56754,63.678307)">
+          <rect
+             style="fill:#784421;stroke-width:0.397809"
+             id="rect1-0"
+             width="39.420147"
+             height="8.6666031"
+             x="160.59384"
+             y="71.584808"
+             ry="4.3333015" />
+          <rect
+             style="fill:#784421;stroke-width:0.397809"
+             id="rect1-5-2"
+             width="39.420147"
+             height="8.6666031"
+             x="-95.564377"
+             y="176.25464"
+             ry="4.3333015"
+             transform="rotate(-90)" />
+          <rect
+             style="fill:#deaa87;stroke-width:0.397809"
+             id="rect1-7-7"
+             width="39.420147"
+             height="8.6666031"
+             x="159.75572"
+             y="70.178635"
+             ry="4.3333015" />
+          <rect
+             style="fill:#deaa87;stroke-width:0.397809"
+             id="rect1-5-0-5"
+             width="39.420147"
+             height="8.6666031"
+             x="-95.344162"
+             y="174.84846"
+             ry="4.3333015"
+             transform="rotate(-90)" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

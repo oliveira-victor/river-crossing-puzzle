@@ -31,14 +31,13 @@ body {
 
 .ground {
     width: 100%;
-    height: 300px;
+    height: 100%; /* EDIT */
     position: absolute;
     bottom: 0;
     left: 0;
     border-radius: 0 0 20px 20px;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    border: 1px solid blue;
 }
 
 .itemsContainer {
@@ -46,11 +45,22 @@ body {
     justify-content: center;
 }
 
-.sideA, .river, .sideB {
-    border: 1px solid red;
+.grass {
+    background-color: #326e3c;
+    background-image: url(./images/grass.webp);
+}
+
+#grass1 {
+    border-radius: 20px 0 0 20px;
+}
+
+#grass2 {
+    border-radius: 0 20px 20px 0;
 }
 
 .river {
+    background-color: #89b7fd;
+    background-image: url(./images/water.webp);
     position: relative;
     display: flex;
     align-items: center;
@@ -100,7 +110,9 @@ body {
 .boat {
     width: 160px;
     height: auto;
-    background-color: #553c17;
+    background-image: url(./images/boat2.webp);
+    background-size: contain;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -109,9 +121,26 @@ body {
     }
 }
 
+.boat .item {
+    transform: translateY(-12px);
+}
+
+.boatFront {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .boatFront img {
+        width: 120px;
+        height: auto;
+    }
+}
+
 .crossBtn {
-    background-color: #d69824;
-    color: #fff;
+    background-color: #ebde2b;
     cursor: pointer;
     position: absolute;
     bottom: 0;
@@ -121,6 +150,11 @@ body {
     padding: 10px 14px;
     border: none;
     border-radius: 6px;
+    transition: all .1s ease;
+}
+
+.crossBtn:hover {
+    background-color: #f7ec56;
 }
 
 .footer {

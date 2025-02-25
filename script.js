@@ -6,9 +6,9 @@ const crossBtn = document.getElementById('crossBtn');
 const moveBoat = document.getElementById('moveBoat');
 
 let listA = [
-    { title: "grass", img: "https://cdn-icons-png.flaticon.com/512/5367/5367613.png" },
-    { title: "goat", img: "https://cdn2.iconfinder.com/data/icons/farm-filled-outline-1/64/goat-animal-mammal-farm-512.png" },
-    { title: "wolf", img: "https://cdn-icons-png.flaticon.com/512/2273/2273646.png" },
+    { title: "grass", img: "./images/grass-bag.webp" },
+    { title: "goat", img: "./images/goat.webp" },
+    { title: "wolf", img: "./images/wolf.webp" },
 ];
 
 let listB = [];
@@ -17,6 +17,12 @@ let boat = null;
 let hasCrossed = false;
 let gameOver = false;
 let disabled = false;
+
+function setGameOver(message) {
+    setTimeout(() => {
+        alert(message);
+    }, 2000);
+}
 
 function checkElements() {
 
@@ -29,18 +35,21 @@ function checkElements() {
         if (listB.length === 3) {
             if (hasWolf && hasGoat && hasGrass) {
                 gameOver = true;
-                return console.log("Congrats! You won.")
+                setGameOver("Parabéns! Você venceu.");
+                return
             }
         }
 
         if (hasWolf && hasGoat) {
             gameOver = true;
-            return console.log(`You lose. The wolf ate the goat`)
+            setGameOver("Você perdeu! O lobo comeu o bode.");
+            return 
         }
 
         if (hasGoat && hasGrass) {
             gameOver = true;
-            return console.log(`You lose. The goat ate the grass`)
+            setGameOver("Você perdeu! O bode comeu a grama.");
+            return
         }
     }
 
