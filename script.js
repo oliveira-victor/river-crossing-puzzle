@@ -1,6 +1,8 @@
 const sideA = document.getElementById('sideA');
 const sideB = document.getElementById('sideB');
+const river = document.getElementById('river');
 const boatSpace = document.getElementById('boat');
+const crossBtn = document.getElementById('crossBtn');
 
 let listA = [
     { title: "grass", img: "https://cdn-icons-png.flaticon.com/512/5367/5367613.png" },
@@ -11,27 +13,34 @@ let listA = [
 let listB = [];
 
 let boat = null;
-
 let hasCrossed = false;
-
 const solution = listA;
+let gameOver = false;
 
 function checkElements() {
     const wolf = "You lose. The wolf ate the goat";
     const goat = "You lose. The goat ate the grass";
 
     const checkList = (list) => {
-        if (list.includes("grass") && list.includes("goat")) {
-            console.log(goat);
+
+        const hasWolf = list.some(obj => obj.title === "wolf");
+        const hasGoat = list.some(obj => obj.title === "goat");
+        const hasGrass = list.some(obj => obj.title === "grass");
+
+        if (hasWolf && hasGoat) {
+            gameOver = true;
+            return console.log(`You lose. The wolf ate the goat`)
         }
-        if (list.includes("goat") && list.includes("wolf")) {
-            console.log(wolf);
+
+        if (hasGoat && hasGrass) {
+            gameOver = true;
+            return console.log(`You lose. The goat ate the grass`)
         }
     }
 
-    if (listA.length === 2) checkList(listA)
+    if (listA.length === 2 && hasCrossed) checkList(listA);
 
-    if (listB.length === 2) checkList(listB)
+    if (listB.length === 2 && !hasCrossed) checkList(listB);
 
     if (listB === solution) {
         return console.log("Congrats! You won.")
@@ -41,6 +50,8 @@ function checkElements() {
 }
 
 function addToBoat(keyWord) {
+    if (gameOver) return
+
     if (boat) {
         if (boat.title === keyWord) {
             listA.push(boat);
@@ -48,7 +59,7 @@ function addToBoat(keyWord) {
 
             return placeItems()
         }
-        
+
         listA.push(boat);
     }
 
@@ -56,8 +67,6 @@ function addToBoat(keyWord) {
         if (listA[i].title === keyWord) {
             boat = listA[i];
             listA.splice(i, 1);
-            console.log(boat)
-            console.log(`Added ${boat} to boat`) // TEMP
             break
         }
     }
@@ -93,8 +102,20 @@ function placeItems() {
     if (boat) {
         generateImages(boatSpace, boat.img, boat.title);
     }
+}
+
+crossBtn.addEventListener("click", function () {
+    if (gameOver) return
+
+    hasCrossed = !hasCrossed;
+
+    if (hasCrossed) {
+        river.classList.add("crossRight");
+    } else {
+        river.classList.remove("crossRight");
+    }
 
     checkElements()
-}
+})
 
 placeItems()

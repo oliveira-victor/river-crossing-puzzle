@@ -37,23 +37,68 @@ body {
     left: 0;
     border-radius: 0 0 20px 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     border: 1px solid blue;
+}
+
+.itemsContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .sideA, .river, .sideB {
     border: 1px solid red;
 }
 
+.river {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    transition: all 3s ease;
+}
+
+.crossRight {
+    justify-content: right;
+}
+
 .sideA {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 .item {
-    width: auto;
+    width: 80px;
     height: 80px;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .item {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.boat {
+    background-color: #233249;
+}
+
+.crossBtn {
+    background-color: #d69824;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -20px);
+    font-size: 20px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
 }
 
 .footer {
