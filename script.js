@@ -15,7 +15,7 @@ let listB = [];
 let boat = null;
 let hasCrossed = false;
 let gameOver = false;
-const solution = listA;
+let disabled = false;
 
 function checkElements() {
 
@@ -24,6 +24,13 @@ function checkElements() {
         const hasWolf = list.some(obj => obj.title === "wolf");
         const hasGoat = list.some(obj => obj.title === "goat");
         const hasGrass = list.some(obj => obj.title === "grass");
+
+        if (listB.length === 3) {
+            if (hasWolf && hasGoat && hasGrass) {
+                gameOver = true;
+                return console.log("Congrats! You won.")
+            }
+        }
 
         if (hasWolf && hasGoat) {
             gameOver = true;
@@ -36,36 +43,46 @@ function checkElements() {
         }
     }
 
+    if (listB.length === 3) checkList(listB);
+
     if (listA.length === 2 && hasCrossed) checkList(listA);
 
     if (listB.length === 2 && !hasCrossed) checkList(listB);
-
-    if (listB === solution) {
-        return console.log("Congrats! You won.")
-    }
-
-    console.log("End of checking");
 }
 
 function addToBoat(keyWord) {
-    if (gameOver) return
+    if (gameOver || disabled) return
 
     if (boat) {
         if (boat.title === keyWord) {
-            listA.push(boat);
-            boat = null;
+            if (!hasCrossed) {
+                listA.push(boat);
+            } else {
+                listB.push(boat);
+            }
 
+            boat = null;
             return placeItems()
         }
 
         listA.push(boat);
     }
 
-    for (let i = 0; i < listA.length; i++) {
-        if (listA[i].title === keyWord) {
-            boat = listA[i];
-            listA.splice(i, 1);
-            break
+    if (!hasCrossed) {
+        for (let i = 0; i < listA.length; i++) {
+            if (listA[i].title === keyWord) {
+                boat = listA[i];
+                listA.splice(i, 1);
+                break
+            }
+        }
+    } else {
+        for (let i = 0; i < listB.length; i++) {
+            if (listB[i].title === keyWord) {
+                boat = listB[i];
+                listB.splice(i, 1);
+                break
+            }
         }
     }
 
@@ -105,16 +122,25 @@ function placeItems() {
 function transferItems() {
     if (hasCrossed && boat) {
         listB.push(boat);
-        boat = null;
-        setTimeout(placeItems, 2000);
     }
+
+    if (!hasCrossed && boat) {
+        listA.push(boat);
+    }
+
+    boat = null;
+    setTimeout(() => {
+        placeItems();
+        disabled = false;
+    }, 2000);
 
     checkElements()
 }
 
-crossBtn.addEventListener("click", function() {
-    if (gameOver) return
+crossBtn.addEventListener("click", function () {
+    if (gameOver || disabled) return
 
+    disabled = true;
     hasCrossed = !hasCrossed;
 
     if (hasCrossed) {
