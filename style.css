@@ -71,7 +71,6 @@ h1 {
 .menuScreen {
     height: 60%;
     padding: 30px 20px 20px 20px;
-    /* overflow-y: auto; */
 }
 
 .menuTxt {
@@ -252,5 +251,27 @@ h1 {
     background-color: #233249;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0;
+    line-height: 1.6;
+}
+
+.iconsContainer {
+    margin: 20px 0;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.iconsContainer img {
+    width: auto;
+    height: 40px;
+}
+
+.footer a {
+    color: #ebde2b;
+}
+
+.disclamer {
+    margin-top: 30px;
+    font-size: 14px;
 }
