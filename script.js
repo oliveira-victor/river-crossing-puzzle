@@ -6,6 +6,11 @@ const crossBtn = document.getElementById('crossBtn');
 const moveBoat = document.getElementById('moveBoat');
 const menuBtn = document.getElementById('menuBtn');
 const ground = document.getElementById('ground');
+const restartBtn = document.getElementById('restartBtn');
+const gameOverScreen = document.getElementById('gameOverScreen');
+const gameOverImg = document.getElementById('gameOverImg');
+const gameOverTxt = document.getElementById('gameOverTxt');
+const gameOverTitle = document.getElementById('gameOverTitle');
 
 let listA = [
     { title: "grass", img: "./images/grass-bag.webp" },
@@ -22,11 +27,63 @@ let disabled = false;
 let menuIsOpen = true;
 let firstMove = false;
 
-function setGameOver(message) {
+function setGameOver(status) {
+    gameOverImg.innerHTML = ''
+
+    if (status === "wolf") {
+        gameOverTitle.innerText = 'Você perdeu!';
+        generateImages(gameOverImg, "./images/lose-wolf.webp", "Wolf running after goat");
+        gameOverTxt.innerText = 'O lobo comeu o bode!';
+    }
+
+    if (status === "goat") {
+        gameOverTitle.innerText = 'Você perdeu!';
+        generateImages(gameOverImg, "./images/lose-goat.webp", "Goat eating veggies");
+        gameOverTxt.innerText = 'O bode comeu os vegetais!';
+    }
+
+    if (status === "win") {
+        gameOverTitle.innerText = 'Parabéns!';
+        generateImages(gameOverImg, "./images/win.webp", "Farmer, goat, wolf and veggies together");
+        gameOverTxt.innerText = 'Você venceu o desafio!';
+    }
+
     setTimeout(() => {
-        alert(message);
+        gameOverScreen.classList.add('displayFlex');
     }, 2000);
 }
+
+function restart() {
+    listA = [
+        { title: "grass", img: "./images/grass-bag.webp" },
+        { title: "goat", img: "./images/goat.webp" },
+        { title: "wolf", img: "./images/wolf.webp" },
+    ];
+
+    listB = [];
+
+    boat = null;
+    hasCrossed = false;
+    gameOver = false;
+    disabled = false;
+    gameOverScreen.classList.remove('displayFlex');
+    moveBoat.classList.remove("moveRight");
+
+    placeItems()
+}
+
+function generateImages (element, img, title) {
+    let imgElement = document.createElement("img");
+    imgElement.setAttribute("src", img);
+    imgElement.setAttribute("alt", title);
+    imgElement.setAttribute("class", "item");
+    imgElement.addEventListener("click", () => {
+        addToBoat(title);
+    });
+    element.appendChild(imgElement);
+}
+
+restartBtn.addEventListener("click", restart);
 
 function checkElements() {
 
@@ -39,20 +96,20 @@ function checkElements() {
         if (listB.length === 3) {
             if (hasWolf && hasGoat && hasGrass) {
                 gameOver = true;
-                setGameOver("Parabéns! Você venceu.");
+                setGameOver("win");
                 return
             }
         }
 
         if (hasWolf && hasGoat) {
             gameOver = true;
-            setGameOver("Você perdeu! O lobo comeu o bode.");
+            setGameOver("wolf");
             return
         }
 
         if (hasGoat && hasGrass) {
             gameOver = true;
-            setGameOver("Você perdeu! O bode comeu a grama.");
+            setGameOver("goat");
             return
         }
     }
@@ -109,16 +166,6 @@ function placeItems() {
     sideB.innerHTML = '';
     boatSpace.innerHTML = '';
 
-    const generateImages = (element, img, title) => {
-        let imgElement = document.createElement("img");
-        imgElement.setAttribute("src", img);
-        imgElement.setAttribute("alt", title);
-        imgElement.setAttribute("class", "item");
-        imgElement.addEventListener("click", () => {
-            addToBoat(title);
-        });
-        element.appendChild(imgElement);
-    }
 
     for (let i = 0; i < listA.length; i++) {
         generateImages(sideA, listA[i].img, listA[i].title);
@@ -156,7 +203,7 @@ crossBtn.addEventListener("click", function () {
 
     disabled = true;
     hasCrossed = !hasCrossed;
-    
+
     if (!firstMove) closeMenu();
     firstMove = true;
 
@@ -182,6 +229,7 @@ function closeMenu() {
 }
 
 menuBtn.addEventListener("click", function () {
+    firstMove = true;
     closeMenu()
 })
 

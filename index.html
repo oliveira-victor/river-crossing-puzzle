@@ -12,10 +12,18 @@
 <body>
     <div class="wrapper">
         <main class="main">
+            <div id="gameOverScreen" class="gameOverScreen">
+                <div class="resultContainer">
+                    <h2 id="gameOverTitle"></h2>
+                    <div id="gameOverImg" class="gameOverImg"></div>
+                    <p id="gameOverTxt" class="gameOverTxt"></p>
+                    <button type="button" id="restartBtn" class="btn">Reiniciar</button>
+                </div>
+            </div>
             <div id="menuBtn" class="menuBtn"></div>
             <div id="menuScreen" class="menuScreen">
                 <h1>Desafio da Travessia do Rio</h1>
-                <div class="menuTxt">
+                <div id="customScrollbar" class="menuTxt">
                     <p>
                         Você possui <b>3</b> itens, sendo eles:
                     </p>
@@ -75,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" id="crossBtn" class="crossBtn">Atravessar</button>
+                    <button type="button" id="crossBtn" class="btn crossBtn">Atravessar</button>
                 </div>
                 <div id="grass2" class="itemsContainer grass">
                     <div id="sideB" class="sideB">
@@ -86,7 +94,8 @@
         <script src="script.js"></script>
     </div>
     <div class="footer">
-        <p>Jogo desenvolvido e ilustrado por <a href="https://victoroliveira.vercel.app/" target="_blank">Victor Freire Oliveira</a></p>
+        <p>Jogo desenvolvido e ilustrado por <a href="https://victoroliveira.vercel.app/" target="_blank">Victor Freire
+                Oliveira</a></p>
         <p><a href="https://vfostudio.vercel.app/" target="_blank">VFO Studio</a></p>
         <div class="iconsContainer">
             <a href="https://victoroliveira.vercel.app/" target="_blank">
