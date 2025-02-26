@@ -20,6 +20,7 @@ let hasCrossed = false;
 let gameOver = false;
 let disabled = false;
 let menuIsOpen = true;
+let firstMove = false;
 
 function setGameOver(message) {
     setTimeout(() => {
@@ -155,6 +156,9 @@ crossBtn.addEventListener("click", function () {
 
     disabled = true;
     hasCrossed = !hasCrossed;
+    
+    if (!firstMove) closeMenu();
+    firstMove = true;
 
     if (hasCrossed) {
         moveBoat.classList.add("moveRight");
@@ -165,7 +169,7 @@ crossBtn.addEventListener("click", function () {
     transferItems()
 });
 
-menuBtn.addEventListener("click", function () {
+function closeMenu() {
     menuIsOpen = !menuIsOpen;
 
     if (menuIsOpen) {
@@ -175,6 +179,10 @@ menuBtn.addEventListener("click", function () {
         menuBtn.classList.add('defaultMenu');
         ground.classList.add('menuColapse');
     }
+}
+
+menuBtn.addEventListener("click", function () {
+    closeMenu()
 })
 
 placeItems()
