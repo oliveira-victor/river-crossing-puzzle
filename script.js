@@ -126,17 +126,12 @@ function addToBoat(keyWord) {
 
     if (boat) {
         if (boat.title === keyWord) {
-            if (!hasCrossed) {
-                listA.push(boat);
-            } else {
-                listB.push(boat);
-            }
-
+            hasCrossed ? listB.push(boat) : listA.push(boat)
             boat = null;
             return placeItems()
         }
 
-        listA.push(boat);
+        hasCrossed ? listB.push(boat) : listA.push(boat)
     }
 
     if (!hasCrossed) {
