@@ -4,6 +4,8 @@ const river = document.getElementById('river');
 const boatSpace = document.getElementById('boat');
 const crossBtn = document.getElementById('crossBtn');
 const moveBoat = document.getElementById('moveBoat');
+const menuBtn = document.getElementById('menuBtn');
+const ground = document.getElementById('ground');
 
 let listA = [
     { title: "grass", img: "./images/grass-bag.webp" },
@@ -17,6 +19,7 @@ let boat = null;
 let hasCrossed = false;
 let gameOver = false;
 let disabled = false;
+let menuIsOpen = true;
 
 function setGameOver(message) {
     setTimeout(() => {
@@ -43,7 +46,7 @@ function checkElements() {
         if (hasWolf && hasGoat) {
             gameOver = true;
             setGameOver("Você perdeu! O lobo comeu o bode.");
-            return 
+            return
         }
 
         if (hasGoat && hasGrass) {
@@ -160,6 +163,18 @@ crossBtn.addEventListener("click", function () {
     }
 
     transferItems()
+});
+
+menuBtn.addEventListener("click", function () {
+    menuIsOpen = !menuIsOpen;
+
+    if (menuIsOpen) {
+        menuBtn.classList.remove('defaultMenu');
+        ground.classList.remove('menuColapse');
+    } else {
+        menuBtn.classList.add('defaultMenu');
+        ground.classList.add('menuColapse');
+    }
 })
 
 placeItems()

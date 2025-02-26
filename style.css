@@ -4,9 +4,17 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Playtime';
+    src: url('./fonts/playtime.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-image: url(./images/background.svg);
     background-size: cover;
+    font-family: 'Playtime', sans-serif;
 }
 
 .wrapper {
@@ -29,15 +37,37 @@ body {
     position: relative;
 }
 
+.menuBtn {
+    background-image: url(./images/close.svg);
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    transform: translate(-20px, 20px);
+    cursor: pointer;
+}
+
+.defaultMenu {
+    background-image: url(./images/menu.svg);
+}
+
 .ground {
     width: 100%;
-    height: 100%; /* EDIT */
+    height: 300px;
     position: absolute;
     bottom: 0;
     left: 0;
     border-radius: 0 0 20px 20px;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    transition: all .3s ease;
+}
+
+.menuColapse {
+    height: 100%;
 }
 
 .itemsContainer {
@@ -67,7 +97,8 @@ body {
     justify-content: left;
 }
 
-.sideA, .sideB {
+.sideA,
+.sideB {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -151,6 +182,7 @@ body {
     border: none;
     border-radius: 6px;
     transition: all .1s ease;
+    font-family: 'playtime', sans-serif;
 }
 
 .crossBtn:hover {
