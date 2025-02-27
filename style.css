@@ -126,6 +126,8 @@ h1 {
     margin-top: 40px;
     height: 100%;
     overflow-y: auto;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 30px;
 }
 
@@ -305,6 +307,10 @@ h1 {
     text-align: center;
     padding: 30px 10px;
     line-height: 1.6;
+}
+
+.author {
+    white-space: nowrap;
 }
 
 .iconsContainer {
